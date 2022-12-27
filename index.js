@@ -1,3 +1,4 @@
+const { createStore } = require("redux");
 // defining constants
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
@@ -52,4 +53,19 @@ const counterReducer = (state=initialCounterState, action) => {
         default:
             //
     }
-}
+};
+
+// store
+// there are three components of store.
+// 1. getState(), dispatch() and subscribe();
+const store = createStore(counterReducer);
+store.subscribe(() => {
+    console.log(store.getState());
+});
+// dipatch action
+store.dispatch({ type: INCREMENT });
+store.dispatch({ type: INCREMENT });
+store.dispatch({ type: INCREMENT });
+store.dispatch({ type: DECREMENT });
+store.dispatch({ type: DECREMENT });
+store.dispatch({ type: DECREMENT });
